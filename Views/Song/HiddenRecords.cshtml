@@ -1,0 +1,88 @@
+@model MvcSongs.Models.SongsGenreViewModel
+
+@{
+    ViewData["Title"] = "Hidden Reocrds";
+}
+
+<h1>Hidden Records</h1>
+
+<form asp-action="DeleteHidden">
+        <input type="submit" value="Delete All" class="btn btn-danger" /> 
+</form>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <strong> Select </strong>
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.music[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.music[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.music[0].ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.music[0].Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.music[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.music[0].SingerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.music[0].Production)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.music[0].Rating)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.music)
+        {
+            <tr>
+                <td>
+                    <input type="checkbox" value="@item.Id" name="selectedSongs">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SingerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Production)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Index">Back To Index</a>
